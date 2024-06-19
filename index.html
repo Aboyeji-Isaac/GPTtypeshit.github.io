@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac - Programmer</title>
+    <style>
+        * {
+            cursor: none;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: none;
+        }
+
+        /* Custom cursor styling */
+        .custom-cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 100%;
+            pointer-events: none; /* Ensure the cursor doesn't block interactions */
+            transform: translate(-50%, -50%);
+            transition: background-color 0.2s ease;
+            z-index: 9999;
+            cursor: none;
+        }
+
+        header {
+            padding-top: 30px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 2px;
+            position: relative;
+        }
+
+        img:active {
+            transform: scale(0.9);
+        }
+
+        img {
+            height: 200px;
+            margin-top: 20px;
+            padding: 0;
+            position: relative;
+            border-radius: 100%;
+            border: 10px solid rgba(236, 56, 197, 0.555);
+            box-shadow: 0 0 10px #00000083;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        #emoji-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.heart-emoji {
+    font-size: 2rem;
+    margin: 5px;
+    animation: pop 0.3s ease-in-out;
+}
+
+/* Animation to make the heart emoji pop */
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+        nav {
+            background-color: #0056b3;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        nav a {
+            color: white;
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+        nav a:hover {
+            background-color: #004b91;
+            padding: 2%;
+        }
+        .Dmode-button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border: 2px solid #007bff;
+            border-radius: 50%;
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bolder;
+            line-height: 46px;
+            text-align: center;
+            cursor: none;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .Dmode-button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .Dmode-button:active {
+            transform: rotate(90deg) scale(0.2);
+        }
+        .toggle-button {
+            font-size: 50px;
+            display: none;
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: none;
+        }
+
+        .toggle-button:active{
+            transform: rotate(30deg) scale(0.9);
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            max-width: 1200px;
+            margin-bottom: 100px;
+        }
+        section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        strong {
+            color: #9e9999;
+            font-weight: 100;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        strong:active {
+            background-color: #004b91;
+        }
+
+        a strong {
+            text-decoration: none;
+        }
+
+         /* Add hover image container styles */
+         .hover-image-container {
+            position: absolute;
+            display: none;
+            z-index: 1000;
+        }
+
+        .hover-image {
+            width: 150px;
+            height: auto;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+        }
+        
+
+        h1 {
+            transition: color 0.3s;
+        }
+
+        h2 {
+            color: #007bff;
+            transition: color 0.3s;
+            height: 30px;
+            width: auto;
+            border-left: 4px solid;
+            border-right: 4px solid;
+            border-radius: 15px 0px;
+            padding: 15px;
+            margin-bottom: 50px;
+            background-color: rgba(240, 238, 238, 0.568);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #007bff;
+            height: 10px;
+            color: white;
+            text-align: center;
+            padding-bottom: 30px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            transition: background-color 0.3s;
+        }
+        footer p {
+            font-size: smaller;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+        }
+        .contact-form textarea {
+            resize: vertical;
+        }
+        .contact-form textarea,
+        .contact-form input:hover {
+            border-color: #007bff;
+        }
+        .contact-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /*this .contact-form button:after is not working and i've not figured out the issue*/
+        button:after{
+            transform: scale(0.95);
+        }
+        .box {
+            padding-top: 20px;
+            position: fixed;
+            bottom: 0;
+            margin-left: 75%;
+            margin-bottom: 50px;
+        }
+        .box a {
+            font-size: 50px;
+            color: #0056b3;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease-in;
+        }
+
+        .box a.spin {
+            animation: spin 0.5s ease-in;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #302a2a;
+            color: #cacaca;
+        }
+
+        body.dark-theme .img-btn {
+            background-color: #333;
+            border-color: #333;
+        }
+        body.dark-theme .custom-cursor {
+            background-color: #f2aff5;
+        }
+        body.dark-theme .Dmode-button {
+            background-color: #f2aff5;
+            color: #333;
+            border-color: #f2aff5;
+        }
+        body.dark-theme header {
+            background-color: #333;
+        }
+        body.dark-theme nav {
+            background-color: #f2aff5;
+        }
+        body.dark-theme .toggle-button {
+            background-color: #f2aff5;
+        }
+        body.dark-theme nav a:hover {
+            background-color: #f01f99;
+        }
+        body.dark-theme h1 {
+            color: #f2aff5;
+        }
+        body.dark-theme h2 {
+            color: rgba(236, 56, 197, 0.555);
+            background-color: #3b3b3bc5;
+        }
+        body.dark-theme .box a {
+            color: #f01f99;
+        }
+        body.dark-theme .box a:hover {
+            color: #f2aff5;
+        }
+        body.dark-theme footer {
+            background-color: #f2aff5;
+        }
+        body.dark-theme section {
+            background-color: #333;
+        }
+        body.dark-theme .contact-form input {
+            background-color: #302a2abd;
+            border-color: #f2aff5;
+            color: #cacaca;
+        }
+        body.dark-theme .contact-form textarea {
+            background-color: #302a2abd;
+            border-color: #f2aff5;
+            color: #cacaca;
+        }
+        body.dark-theme .contact-form button {
+            background-color: #f2aff5;
+        }
+        body.dark-theme .contact-form button:hover {
+            background-color: #f01f99;
+        }
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            strong {
+                color: #cacaca;
+                font-weight: 100;
+            }
+        }
+            strong:hover {
+                color: default;
+                background-color: none;
+                padding: 5%;
+            }
+            .container {
+                width: 90%;
+        }
+        @media only screen and (max-width: 480px) {
+            strong {
+                color: #9e9999;
+                font-weight: 100;
+            }
+
+            strong:hover {
+                color: default;
+                background-color: none;
+                padding: 5%;
+            }
+            .container {
+                width: 90%;
+            }
+
+            nav {
+                padding: 5px 0;
+            }
+            nav a {
+                padding: 10px 10px;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                padding: 8px;
+            }
+            .contact-form button {
+                padding: 8px 12px;
+            }
+            .toggle-button {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <a href="cursour.html"></a>
+</head>
+<body>
+    <header>
+        <div class="Dmode-button" onclick='toggleTheme()'>🌗</div>
+        <img src="asset/isaacprofile-pic.png" alt="Profile Picture" id="clickable-img">
+        <div id="emoji-container"></div>
+        <h1>Isaacoin</h1>
+        <p>Passionate Programmer</p>
+    </header>
+    <nav>
+        <button class="toggle-button" onclick="toggleMenu()">∞</button>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Comment</a>
+    </nav>
+    <div class="container">
+        <section id="about">
+            <h2>About Me 😎</h2>
+            <p>Hello! I'm Isaac, a dedicated programmer with a passion for building robust and scalable software solutions. With over 5 years of experience <strong data-hover-image="asset/isaacprofile pic.jpg">(well that's just a lie it's just 2 to 3 years. i'm trying to fill up my portfolio)</strong>, I specialize in <a href="http://www.python.org"><strong data-hover-image="asset/python.jpg">Python</strong></a>, <strong data-hover-image="asset/javascript.jpg">JavaScript</strong>, and <strong data-hover-image="asset/sql.jpg">SQL</strong></p>. I have hands-on experience in developing web applications using <strong data-hover-image="Django.jpg">Django</strong> and <strong data-hover-image="react.jpg">React.js</strong>, ensuring high performance and user-friendly interfaces.</p>
+            <p>I thrive in challenging environments where I can utilize my problem-solving skills and collaborate with teams to deliver exceptional results. My commitment to continuous learning drives me to stay updated with the latest technologies and best practices in software development.</p>
+        </section>
+        <section id="skills">
+            <h2>Skills👨‍💻</h2>
+            <ul>
+                <li><strong>Programming Languages:</strong> Python, JavaScript, SQL</li>
+                <li><strong>Frameworks & Libraries:</strong> Django, Flask, React.js, Node.js, Express.js</li>
+                <li><strong>Tools & Technologies:</strong> Git, Docker, RESTful APIs, AWS</li>
+                <li><strong>Other Skills:</strong> Agile Methodologies, Problem-solving, Team Collaboration</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Add comment 💖</h2>
+            <form class="contact-form" onsubmit="return validateForm()">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Send 🚀</button>
+            </form>
+        </section>
+        <div class="box">
+            <a href="#" id="spinLink">🙄</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Isaac. All rights reserved.</p>
+    </footer>
+
+    <script>
+         // Hover Image Functionality
+         document.addEventListener('DOMContentLoaded', function () {
+            const hoverImageContainer = document.getElementById('hoverImageContainer');
+            const hoverImage = document.getElementById('hoverImage');
+
+            document.querySelectorAll('strong').forEach(function (element) {
+                element.addEventListener('mouseover', function (e) {
+                    // Set the image source based on the hovered element
+                    hoverImage.src = this.getAttribute('data-hover-image');
+                    hoverImageContainer.style.display = 'block';
+                    hoverImageContainer.style.left = (e.pageX + 10) + 'px'; // Adjust positioning
+                    hoverImageContainer.style.top = (e.pageY + 10) + 'px'; // Adjust positioning
+                });
+
+                element.addEventListener('mousemove', function (e) {
+                    hoverImageContainer.style.left = (e.pageX + 10) + 'px';
+                    hoverImageContainer.style.top = (e.pageY + 10) + 'px';
+                });
+
+                element.addEventListener('mouseout', function () {
+                    hoverImageContainer.style.display = 'none';
+                });
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toggle Navigation Menu
+        function toggleMenu() {
+            var links = document.querySelectorAll('nav a');
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].style.display === 'block') {
+                    links[i].style.display = 'none';
+                } else {
+                    links[i].style.display = 'block';
+                }
+            }
+        }
+        // JavaScript to move the custom cursor
+        document.addEventListener('mousemove', function(e) {
+            var cursor = document.getElementById('customCursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Optional: Change cursor color on hover over certain elements
+        document.querySelectorAll('a, button').forEach(function(element) {
+            element.addEventListener('mouseover', function() {
+                document.getElementById('customCursor').style.backgroundColor = 'darkblue';
+            });
+            element.addEventListener('mouseout', function() {
+                document.getElementById('customCursor').style.backgroundColor = 'blue';
+            });
+        });
+
+        // Toggle Navigation Menu
+        function toggleMenu() {
+            var links = document.querySelectorAll('nav a');
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].style.display === 'block') {
+                    links[i].style.display = 'none';
+                } else {
+                    links[i].style.display = 'block';
+                }
+            }
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+
+        // Form Validation
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            if (name === '' || email === '' || message === '') {
+                alert('No de rush u never fill this one na😏');
+                return false;
+            }
+            alert('Succesfull 💯 u get level 🙌');
+            return true;
+        }
+
+        // Add spin effect to the .box a element and scroll to top
+        document.getElementById('spinLink').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            this.classList.add('spin');
+            setTimeout(() => {
+                this.classList.remove('spin');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1000); // Duration of the spin animation
+        });
+
+        // for emoji pop up
+document.getElementById('clickable-img').addEventListener('click', function(event) {
+    const emojiContainer = document.getElementById('emoji-container');
+    
+    // Create a new span element for the heart emoji
+    const heartEmoji = document.createElement('span');
+    heartEmoji.classList.add('heart-emoji');
+    heartEmoji.textContent = '❤️';
+    
+    // Append the new heart emoji to the container
+    emojiContainer.appendChild(heartEmoji);
+    
+    // Optional: Remove the emoji after a few seconds
+    setTimeout(() => {
+        heartEmoji.remove();
+    }, 3000); // Remove after 3 seconds
+});
+
+
+    </script>
+    
+    <div class="custom-cursor" id="customCursor"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
