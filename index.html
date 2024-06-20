@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isaac - Programmer</title>
+    <title>💡👍💖🚀😏∞</title>
     <style>
         * {
             cursor: none;
@@ -56,29 +56,51 @@
             box-shadow: 0 0 10px #00000083;
             transition: background-color 0.3s, color 0.3s, transform 0.3s;
         }
+        /* .heart-container {
+            top: 0;
+            margin-top: 90px;
+            margin-left: 270px;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
 
-        #emoji-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
+        .heart-button {
+            width: 50px;
+            height: 50px;
+            background: url('https://cdn-icons-png.flaticon.com/512/1077/1077035.png') no-repeat center center;
+            background-size: contain;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative; /* Ensure button is positioned relative */
+        }
 
-.heart-emoji {
-    font-size: 2rem;
-    margin: 5px;
-    animation: pop 0.3s ease-in-out;
-}
+        .heart {
+            margin-top: 100px;
+            left: 0;
+            margin-left: 50%;
+            width: 30px;
+            height: 30px;
+            background: url('https://cdn-icons-png.flaticon.com/512/1076/1076984.png') no-repeat center center;
+            background-size: contain;
+            position: absolute;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            animation: floatAndFade 1s ease forwards;
+        }
 
-/* Animation to make the heart emoji pop */
-@keyframes pop {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+        @keyframes floatAndFade {
+            0% {
+                transform: translate(-50%, -50%) scale(1) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5) translateY(-100px);
+                opacity: 0;
+            }
+        }
 
         nav {
             background-color: #0056b3;
@@ -269,6 +291,87 @@
         .box a.spin {
             animation: spin 0.5s ease-in;
         }
+
+        #logo-container {
+    display: inline-block;
+    font-family: Arial, sans-serif; /* Adjust font family as needed */
+    font-size: 48px; /* Adjust font size as needed */
+    font-weight: bold; /* Adjust font weight as needed */
+    text-transform: uppercase; /* Adjust text transform as needed */
+    color: #1DA1F2; /* Twitter blue */
+    position: relative;
+    overflow: hidden;
+}
+
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.glitch::before {
+    left: -3px; /* Adjust as needed */
+    text-shadow: -2px 0 red; /* Glitch color 1 */
+    animation: glitch1 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: 3px; /* Adjust as needed */
+    text-shadow: 2px 0 green; /* Glitch color 2 */
+    animation: glitch2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch1 {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, -2px);
+    }
+    40% {
+        transform: translate(2px, 2px);
+    }
+    60% {
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        transform: translate(2px, 2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch2 {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(-2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+
+   
         @keyframes spin {
             from {
                 transform: rotate(0deg);
@@ -348,6 +451,15 @@
                 color: #cacaca;
                 font-weight: 100;
             }
+            .heart{
+                margin-left: 50%;
+            }
+        }
+
+        @media only screen and (max-width: 1027px){
+            .heart{
+                margin-left: 50%;
+            }
         }
             strong:hover {
                 color: default;
@@ -361,6 +473,10 @@
             strong {
                 color: #9e9999;
                 font-weight: 100;
+            }
+
+            .heart{
+                margin-left: 50%;
             }
 
             strong:hover {
@@ -395,10 +511,14 @@
 </head>
 <body>
     <header>
-        <div class="Dmode-button" onclick='toggleTheme()'>🌗</div>
-        <img src="asset/isaacprofile-pic.png" alt="Profile Picture" id="clickable-img">
-        <div id="emoji-container"></div>
-        <h1>Isaacoin</h1>
+        <div class="Dmode-button" onclick='toggleTheme()'>💡</div>
+        <div id="heart-button"><img class="hear" src="asset/isaacprofile-pic.png" alt="Profile Picture" ></div>
+        
+        
+          <!-- <div class="heart-button">  <button id="heart-button" class="heart-button"></button></div> -->
+
+
+                <h1>Isaac</h1>
         <p>Passionate Programmer</p>
     </header>
     <nav>
@@ -437,6 +557,8 @@
                 <button type="submit">Send 🚀</button>
             </form>
         </section>
+       <div class="logo-container" id="logo-container"> <a href="https://twitter.com/intent/follow?screen_name=AboyejiIsaac" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 128 128"><path d="M75.916 54.2L122.542 0h-11.05L71.008 47.06L38.672 0H1.376l48.898 71.164L1.376 128h11.05L55.18 78.303L89.328 128h37.296L75.913 54.2ZM60.782 71.79l-4.955-7.086l-39.42-56.386h16.972L65.19 53.824l4.954 7.086l41.353 59.15h-16.97L60.782 71.793Z"/></svg></a></div>
+
         <div class="box">
             <a href="#" id="spinLink">🙄</a>
         </div>
@@ -545,7 +667,7 @@
                 alert('No de rush u never fill this one na😏');
                 return false;
             }
-            alert('Succesfull 💯 u get level 🙌');
+            alert("Succesfull 💯 u get level 🙌.we'll get back to you ");
             return true;
         }
 
@@ -556,26 +678,106 @@
             setTimeout(() => {
                 this.classList.remove('spin');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1000); // Duration of the spin animation
+            }, 600); // Duration of the spin animation
         });
 
-        // for emoji pop up
-document.getElementById('clickable-img').addEventListener('click', function(event) {
-    const emojiContainer = document.getElementById('emoji-container');
-    
-    // Create a new span element for the heart emoji
-    const heartEmoji = document.createElement('span');
-    heartEmoji.classList.add('heart-emoji');
-    heartEmoji.textContent = '❤️';
-    
-    // Append the new heart emoji to the container
-    emojiContainer.appendChild(heartEmoji);
-    
-    // Optional: Remove the emoji after a few seconds
-    setTimeout(() => {
-        heartEmoji.remove();
-    }, 3000); // Remove after 3 seconds
+        //heart emoji
+        document.addEventListener('DOMContentLoaded', function() {
+            const heartButton = document.getElementById('heart-button');
+            const heartContainer = document.querySelector('.heart-container');
+
+            let clickTimeout;
+            const clickDelay = 50; // Adjust this value to control the click interval
+
+            heartButton.addEventListener('click', function(event) {
+                clearTimeout(clickTimeout); // Clear previous timeout
+
+                // Generate hearts after a short delay to allow for rapid clicks
+                clickTimeout = setTimeout(function() {
+                    generateHearts(5);
+                }, clickDelay);
+            });
+
+            function generateHearts(count) {
+                for (let i = 0; i < count; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+
+                    // Randomize heart position around the button
+                    const offsetX = (Math.random() - 0.5) * 50;
+                    const offsetY = (Math.random() - 0.5) * 50;
+
+                    heart.style.left = `${offsetX}px`;
+                    heart.style.top = `${offsetY}px`;
+
+                    heartButton.appendChild(heart);
+
+                    // Remove the heart after animation ends
+                    heart.addEventListener('animationend', () => {
+                        heart.remove();
+                    });
+                }
+            }
+        });
+
+        //logo container glitching effect
+        (function($) {
+    $.fn.glitch = function(options) {
+        var settings = $.extend({
+            layers: ["#1DA1F2", "#FFFFFF"], // Example colors: Twitter blue and white
+            maxOffset: [20, 10], // Maximum offset range
+            interval: 100, // Interval for glitch effect refresh
+            duration: 300, // Duration of glitch effect
+            maxOpacity: 0.5 // Maximum opacity for glitch layers
+        }, options);
+
+        var content = $(this).html();
+        $(this).empty();
+
+        for (var i = 0; i < settings.layers.length; ++i) {
+            $(this).append("<div class='glitch-layer' style='color:" + settings.layers[i] + ";'>" + content + "</div>");
+        }
+        $(this).append("<div class='glitch-display'>" + content + "</div>");
+
+        var startTime = new Date().getTime();
+        var self = this;
+
+        function renderGlitch() {
+            var time = new Date().getTime() - startTime;
+            var visibility = Math.sin(time / settings.duration) > 0.8;
+
+            self.find(".glitch-layer").each(function() {
+                var offset = [
+                    visibility * ((Math.random() * 2 - 1) * settings.maxOffset[0]),
+                    visibility * ((Math.random() * 2 - 1) * settings.maxOffset[1]),
+                ];
+                $(this)
+                    .css("top", offset[1] + "px")
+                    .css("left", offset[0] + "px")
+                    .css("opacity", settings.maxOpacity);
+            });
+
+            self.find(".glitch-display").css("opacity", 1 - settings.maxOpacity);
+
+            setTimeout(renderGlitch, settings.interval);
+        }
+
+        renderGlitch();
+    };
+})(jQuery);
+
+$(document).ready(function() {
+    $('#logo-container').glitch();
 });
+
+
+// $(document).ready(function() {
+//     $('#logo-container').glitch({
+//         layers: ["#1DA1F2", "#FFFFFF"], // Adjust colors as needed
+//         offset: [20, 10] // Adjust offset range as needed
+//     });
+// });
+
 
 
     </script>
